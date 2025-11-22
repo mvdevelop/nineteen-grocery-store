@@ -1,6 +1,9 @@
 
-import React, { createContext, useEffect, useState } from "react";
+// src/App.jsx
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { ThemeContext } from "./context/ThemeContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -13,10 +16,7 @@ import Contato from "./pages/Contato";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const ThemeContext = createContext();
-
 function App() {
-
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "light";
   });
@@ -27,14 +27,17 @@ function App() {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <BrowserRouter>
+
+        {/* Navbar */}
         <Navbar />
 
+        {/* Wrapper para aplicar tema */}
         <div className={theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}>
           <Routes>
             <Route path="/" element={<Home />} />
