@@ -1,0 +1,40 @@
+
+/* Home — Banner */
+/* Agora ocupa 100% da largura da tela */
+.banner-container {
+  width: 100%;
+  margin: 0;             /* remove margens laterais */
+  border-radius: 0;      /* remove bordas arredondadas (opcional) */
+  overflow: hidden;
+}
+
+/* Banner Swiper */
+.banner-swiper {
+  width: 100%;
+  height: 380px; /* altura standard */
+}
+
+/* Imagens do banner */
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .banner-swiper {
+    height: 140px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+  .banner-swiper {
+    height: 110px;
+  }
+}
+
+

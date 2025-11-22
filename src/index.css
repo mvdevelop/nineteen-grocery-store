@@ -5,11 +5,43 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
-#root { 
+#root { }
 
+/* Tema Light */
+body[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #222;
+  --header-bg: #ffffff;
+  --header-border: #e5e5e5;
 }
 
+/* Tema Dark */
+body[data-theme="dark"] {
+  --bg-color: #1c1c1c;
+  --text-color: #f1f1f1;
+  --header-bg: #242424;
+  --header-border: #444;
+}
 
+/* Aplicar variáveis */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Navbar */
+.nav {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+}
+
+/* Botão */
+.theme-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+}

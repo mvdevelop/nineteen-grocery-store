@@ -1,20 +1,24 @@
 
-import React, { useState } from "react";
-import { FaUser, FaUserPlus, FaBars, FaTimes, FaSearch } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import { FaUser, FaUserPlus, FaBars, FaTimes, FaSearch, FaMoon, FaSun } from "react-icons/fa";
+import { ThemeContext } from "../App";
 import "./components.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // ⬇ Pegando tema + função do contexto
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <nav className="nav">
+    <nav className={`nav ${theme === "dark" ? "nav-dark" : "nav-light"}`}>
       <div className="nav-container">
-        
+
         {/* Logo */}
-        <img src="/public/icon.ico" alt="" />
+        <img src="/icon.ico" alt="Logo" className="nav-logo-img" />
         <div className="nav-logo">19 Grocery Store</div>
 
-        {/* Hamburguer menu mobile */}
+        {/* Menu hamburguer (mobile) */}
         <div
           className="nav-toggle"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -22,9 +26,9 @@ export default function Navbar() {
           {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
         </div>
 
-        {/* Links + search + ícones */}
+        {/* Items */}
         <div className={`nav-items ${menuOpen ? "active" : ""}`}>
-          
+
           {/* Links */}
           <ul className="nav-links">
             <li><a href="/">Home</a></li>
@@ -33,9 +37,13 @@ export default function Navbar() {
             <li><a href="/contato">Contato</a></li>
           </ul>
 
-          {/* Search bar + luneta */}
+          {/* Barra de busca */}
           <div className="nav-search">
-            <input type="text" placeholder="Buscar produtos..." />
+            <input
+              type="text"
+              placeholder="Buscar produtos..."
+              className={theme === "dark" ? "input-dark" : "input-light"}
+            />
             <FaSearch className="search-icon" />
           </div>
 
@@ -43,6 +51,11 @@ export default function Navbar() {
           <div className="nav-icons">
             <FaUser className="nav-icon" title="Login" />
             <FaUserPlus className="nav-icon" title="Criar conta" />
+
+            {/* Botão de alternância do tema */}
+            <button className="theme-button" onClick={toggleTheme}>
+              {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
+            </button>
           </div>
 
         </div>

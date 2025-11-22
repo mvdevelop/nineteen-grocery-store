@@ -1,47 +1,46 @@
 
-/* ----- LAYOUT GERAL Navbar ----- */
+/* Navbar */
 .nav {
   width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
   position: sticky;
   top: 0;
   z-index: 999;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .nav-container {
   max-width: 1200px;
   margin: auto;
   height: 70px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 0 20px;
 }
 
-/* ----- LOGO + IMAGEM ----- */
-.nav-logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #2b8a3e;
-  margin-left: 8px;
-}
-
+/* Logo */
 .nav-container img {
   width: 38px;
   height: 38px;
   object-fit: contain;
 }
 
-/* ----- NAV ITEMS ----- */
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-left: 8px;
+  color: var(--primary);
+}
+
+/* Items */
 .nav-items {
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
-/* ----- LINKS ----- */
+/* Links */
 .nav-links {
   display: flex;
   gap: 20px;
@@ -52,17 +51,19 @@
 }
 
 .nav-links a {
-  text-decoration: none;
   font-size: 1rem;
-  color: #333;
-  transition: .2s;
+  text-decoration: none;
+  transition: 0.2s;
+  color: var(--text);
 }
 
 .nav-links a:hover {
-  color: #2b8a3e;
+  color: var(--primary);
 }
 
-/* ----- SEARCH BAR + ÍCONE ----- */
+/* =======================================================
+   Search Bar
+======================================================= */
 .nav-search {
   position: relative;
   display: flex;
@@ -72,23 +73,27 @@
 .nav-search input {
   padding: 6px 35px 6px 12px;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   outline: none;
-  transition: .2s;
+  transition: 0.2s;
+  background: var(--input-bg);
+  color: var(--input-text);
 }
 
 .nav-search input:focus {
-  border-color: #2b8a3e;
+  border-color: var(--primary);
 }
 
 .search-icon {
   position: absolute;
   right: 10px;
   font-size: 1.1rem;
-  color: #555;
+  color: var(--text-light);
 }
 
-/* ----- ICONS ----- */
+/* =======================================================
+   Ícones
+======================================================= */
 .nav-icons {
   display: flex;
   gap: 15px;
@@ -97,21 +102,23 @@
 .nav-icon {
   font-size: 1.3rem;
   cursor: pointer;
-  color: #333;
-  transition: .2s;
+  color: var(--text);
+  transition: 0.2s;
 }
 
 .nav-icon:hover {
-  color: #2b8a3e;
+  color: var(--primary);
 }
 
-/* ----- TOGGLE BUTTON (MOBILE) ----- */
+/* =======================================================
+   Menu Mobile
+======================================================= */
 .nav-toggle {
   display: none;
   cursor: pointer;
 }
 
-/* ----- RESPONSIVIDADE ----- */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
@@ -119,17 +126,17 @@
 
   .nav-items {
     position: absolute;
-    top: 70px;
     left: 0;
-    background: white;
+    top: 70px;
     width: 100%;
     height: 0;
     overflow: hidden;
     flex-direction: column;
     gap: 20px;
     padding: 0 20px;
-    border-bottom: 1px solid #eee;
-    transition: .3s ease;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-light);
+    transition: 0.3s ease;
   }
 
   .nav-items.active {
@@ -139,15 +146,89 @@
 
   .nav-links {
     flex-direction: column;
-    align-items: center;
     gap: 15px;
-  }
-
-  .nav-search {
-    width: 100%;
   }
 
   .nav-search input {
     width: 100%;
   }
+}
+
+/* =======================================================
+   Footer Links & Ícones
+======================================================= */
+.footer-link,
+.footer-social {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.footer-link:hover,
+.footer-social:hover {
+  color: var(--primary);
+}
+
+/* =======================================================
+   Tema Claro / Escuro
+======================================================= */
+:root {
+  --primary: #2b8a3e;
+
+  /* Tema Claro */
+  --bg-light: #ffffff;
+  --text-light-theme: #000;
+  --input-light-bg: #fff;
+  --input-light-text: #000;
+  --border-light: #ddd;
+}
+
+/* Tema Escuro */
+:root.dark {
+  --bg-light: #121212;
+  --text-light-theme: #fff;
+  --input-light-bg: #2a2a2a;
+  --input-light-text: #fff;
+  --border-light: #444;
+}
+
+/* Aplicação */
+.nav-light,
+:root:not(.dark) .nav {
+  background: #ffffff;
+  color: #000;
+}
+
+.nav-dark,
+:root.dark .nav {
+  background: #121212;
+  color: #fff;
+}
+
+/* Variáveis adaptativas */
+:root:not(.dark) {
+  --bg: #fff;
+  --text: #333;
+  --text-light: #555;
+  --border: #ddd;
+  --input-bg: #fff;
+  --input-text: #000;
+}
+
+:root.dark {
+  --bg: #121212;
+  --text: #fff;
+  --text-light: #aaa;
+  --border: #444;
+  --input-bg: #2a2a2a;
+  --input-text: #fff;
+}
+
+/* Botão tema */
+.theme-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  margin-left: 10px;
 }
