@@ -1,2 +1,83 @@
 
-
+[
+  {
+    "id": 1,
+    "nome": "Arroz Branco Tipo 1 5kg",
+    "tag": "alimento",
+    "preco-antigo": 27.9,
+    "preco": 22.9,
+    "img": "/assets/products/arroz-5kg.jpg"
+  },
+  {
+    "id": 2,
+    "nome": "Feijão Carioca 1kg",
+    "tag": "alimento",
+    "preco-antigo": 8.99,
+    "preco": 6.99,
+    "img": "/assets/products/feijao-1kg.jpg"
+  },
+  {
+    "id": 3,
+    "nome": "Açúcar Cristal 1kg",
+    "tag": "alimento",
+    "preco-antigo": 4.5,
+    "preco": 3.79,
+    "img": "/assets/products/acucar-1kg.jpg"
+  },
+  {
+    "id": 4,
+    "nome": "Óleo de Soja 900ml",
+    "tag": "cozinha",
+    "preco-antigo": 8.49,
+    "preco": 6.99,
+    "img": "/assets/products/oleo-900ml.jpg"
+  },
+  {
+    "id": 5,
+    "nome": "Leite Integral 1L",
+    "tag": "geladeira",
+    "preco-antigo": 5.79,
+    "preco": 4.89,
+    "img": "/assets/products/leite-1l.jpg"
+  },
+  {
+    "id": 6,
+    "nome": "Café Tradicional 500g",
+    "tag": "alimento",
+    "preco-antigo": 16.9,
+    "preco": 12.9,
+    "img": "/assets/products/cafe-500g.jpg"
+  },
+  {
+    "id": 7,
+    "nome": "Macarrão Espaguete 500g",
+    "tag": "alimento",
+    "preco-antigo": 4.2,
+    "preco": 3.2,
+    "img": "/assets/products/macarrao-500g.jpg"
+  },
+  {
+    "id": 8,
+    "nome": "Sabão em Pó 1kg",
+    "tag": "limpeza",
+    "preco-antigo": 12.99,
+    "preco": 9.99,
+    "img": "/assets/products/sabao-po-1kg.jpg"
+  },
+  {
+    "id": 9,
+    "nome": "Detergente Líquido 500ml",
+    "tag": "limpeza",
+    "preco-antigo": 2.99,
+    "preco": 2.19,
+    "img": "/assets/products/detergente-500ml.jpg"
+  },
+  {
+    "id": 10,
+    "nome": "Papel Higiênico 12 rolos",
+    "tag": "higiene",
+    "preco-antigo": 18.5,
+    "preco": 14.9,
+    "img": "/assets/products/papel-higienico-12.jpg"
+  }
+]

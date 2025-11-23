@@ -1,11 +1,15 @@
 
-/* Navbar */
+/* =======================================================
+   BASE GERAL DA NAVBAR
+======================================================= */
 .nav {
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 999;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--nav-border);
+  background: var(--nav-bg);
+  color: var(--nav-text);
 }
 
 .nav-container {
@@ -54,7 +58,7 @@
   font-size: 1rem;
   text-decoration: none;
   transition: 0.2s;
-  color: var(--text);
+  color: var(--nav-text);
 }
 
 .nav-links a:hover {
@@ -73,7 +77,7 @@
 .nav-search input {
   padding: 6px 35px 6px 12px;
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--input-border);
   outline: none;
   transition: 0.2s;
   background: var(--input-bg);
@@ -102,12 +106,19 @@
 .nav-icon {
   font-size: 1.3rem;
   cursor: pointer;
-  color: var(--text);
+  color: var(--nav-text);
   transition: 0.2s;
 }
 
 .nav-icon:hover {
   color: var(--primary);
+}
+
+.theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--nav-text);
 }
 
 /* =======================================================
@@ -116,6 +127,7 @@
 .nav-toggle {
   display: none;
   cursor: pointer;
+  color: var(--nav-text);
 }
 
 /* RESPONSIVE */
@@ -134,8 +146,8 @@
     flex-direction: column;
     gap: 20px;
     padding: 0 20px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border-light);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
     transition: 0.3s ease;
   }
 
@@ -155,19 +167,73 @@
 }
 
 /* =======================================================
-   Footer Links & Ícones
+   LIGHT THEME (Padrão)
 ======================================================= */
-.footer-link,
-.footer-social {
-  color: var(--text-light);
-  text-decoration: none;
-  transition: 0.2s;
+.nav-light {
+  --nav-bg: #ffffff;
+  --nav-text: #222;
+  --nav-border: #e5e5e5;
+
+  --input-bg: #ffffff;
+  --input-text: #222;
+  --input-border: #ccc;
+
+  --text-light: #777;
 }
 
-.footer-link:hover,
-.footer-social:hover {
-  color: var(--primary);
+/* =======================================================
+   DARK THEME
+======================================================= */
+.nav-dark {
+  --nav-bg: #111;
+  --nav-text: #fff;
+  --nav-border: #333;
+
+  --input-bg: #222;
+  --input-text: #fff;
+  --input-border: #444;
+
+  --text-light: #aaa;
 }
+
+/* Footer com fundo escuro e texto branco */
+.footer-dark {
+  background-color: #111;     /* Preto suave */
+  color: #fff;                /* Texto branco */
+}
+
+/* Títulos */
+.footer-title,
+.footer-subtitle {
+  color: #fff;
+}
+
+/* Texto */
+.footer-text,
+.footer-copy {
+  color: #ddd;                /* Cinza claro para melhor leitura */
+}
+
+/* Links */
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* Ícones sociais */
+.footer-social {
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.footer-social:hover {
+  color: #fff;
+}
+
 
 /* =======================================================
    Tema Claro / Escuro

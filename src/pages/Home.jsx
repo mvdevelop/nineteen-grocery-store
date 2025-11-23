@@ -56,7 +56,6 @@ export default function Home() {
       </section>
 
       <section>
-        <h2>Produtos</h2>
         <Promocao />
         <Produtos />
       </section>

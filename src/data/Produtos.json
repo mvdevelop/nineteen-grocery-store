@@ -1,0 +1,492 @@
+{
+  "matinais": [
+    {
+      "id": 1,
+      "nome": "Pão de Forma Integral",
+      "tag": "Integral 500g",
+      "preco-antigo": 9.99,
+      "preco": 7.99,
+      "img": "/img/produtos/matinais/pao-integral.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Café Torrado e Moído",
+      "tag": "Tradicional 500g",
+      "preco-antigo": 18.9,
+      "preco": 14.9,
+      "img": "/img/produtos/matinais/cafe-tradicional.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Achocolatado em Pó",
+      "tag": "Sachê 700g",
+      "preco-antigo": 14.5,
+      "preco": 11.9,
+      "img": "/img/produtos/matinais/achocolatado.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Biscoito Cream Cracker",
+      "tag": "Pacote 350g",
+      "preco-antigo": 7.99,
+      "preco": 5.99,
+      "img": "/img/produtos/matinais/cream-cracker.jpg"
+    },
+    {
+      "id": 5,
+      "nome": "Aveia em Flocos Finos",
+      "tag": "Pacote 1kg",
+      "preco-antigo": 13.9,
+      "preco": 10.9,
+      "img": "/img/produtos/matinais/aveia.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Granola Tradicional",
+      "tag": "Saco 1kg",
+      "preco-antigo": 19.9,
+      "preco": 15.9,
+      "img": "/img/produtos/matinais/granola.jpg"
+    },
+    {
+      "id": 7,
+      "nome": "Suco de Laranja Integral",
+      "tag": "Garrafa 1L",
+      "preco-antigo": 11.5,
+      "preco": 8.99,
+      "img": "/img/produtos/matinais/suco-laranja.jpg"
+    },
+    {
+      "id": 8,
+      "nome": "Torrada Integral",
+      "tag": "Caixa 160g",
+      "preco-antigo": 6.99,
+      "preco": 4.99,
+      "img": "/img/produtos/matinais/torrada-integral.jpg"
+    },
+    {
+      "id": 9,
+      "nome": "Margarina Cremosa",
+      "tag": "Pote 500g",
+      "preco-antigo": 8.5,
+      "preco": 6.4,
+      "img": "/img/produtos/matinais/margarina.jpg"
+    },
+    {
+      "id": 10,
+      "nome": "Queijo Minas Frescal",
+      "tag": "Peça 500g",
+      "preco-antigo": 24.9,
+      "preco": 19.9,
+      "img": "/img/produtos/matinais/queijo-minas.jpg"
+    },
+    {
+      "id": 11,
+      "nome": "Mel Natural",
+      "tag": "Frasco 300g",
+      "preco-antigo": 25.0,
+      "preco": 21.9,
+      "img": "/img/produtos/matinais/mel-natural.jpg"
+    },
+    {
+      "id": 12,
+      "nome": "Chá Verde",
+      "tag": "Caixa 20 sachês",
+      "preco-antigo": 18.0,
+      "preco": 14.5,
+      "img": "/img/produtos/matinais/cha-verde.jpg"
+    }
+  ],
+  "laticíneos": [
+    {
+      "id": 13,
+      "nome": "Leite Integral UHT",
+      "tag": "Caixa 1L",
+      "preco-antigo": 5.5,
+      "preco": 4.29,
+      "img": "/img/produtos/laticineos/leite-integral.jpg"
+    },
+    {
+      "id": 14,
+      "nome": "Iogurte Natural",
+      "tag": "Garrafa 1L",
+      "preco-antigo": 7.9,
+      "preco": 6.5,
+      "img": "/img/produtos/laticineos/iogurte-natural.jpg"
+    },
+    {
+      "id": 15,
+      "nome": "Manteiga com Sal",
+      "tag": "Pote 200g",
+      "preco-antigo": 9.99,
+      "preco": 7.99,
+      "img": "/img/produtos/laticineos/manteiga.jpg"
+    },
+    {
+      "id": 16,
+      "nome": "Requeijão Cremoso",
+      "tag": "Pote 250g",
+      "preco-antigo": 12.9,
+      "preco": 10.5,
+      "img": "/img/produtos/laticineos/requeijao.jpg"
+    },
+    {
+      "id": 17,
+      "nome": "Queijo Mussarela",
+      "tag": "Peça 500g",
+      "preco-antigo": 28.0,
+      "preco": 24.9,
+      "img": "/img/produtos/laticineos/queijo-mussarela.jpg"
+    },
+    {
+      "id": 18,
+      "nome": "Creme de Leite",
+      "tag": "Caixa 200g",
+      "preco-antigo": 5.99,
+      "preco": 4.99,
+      "img": "/img/produtos/laticineos/creme-leite.jpg"
+    },
+    {
+      "id": 19,
+      "nome": "Leite Desnatado UHT",
+      "tag": "Caixa 1L",
+      "preco-antigo": 5.5,
+      "preco": 4.19,
+      "img": "/img/produtos/laticineos/leite-desnatado.jpg"
+    },
+    {
+      "id": 20,
+      "nome": "Iogurte Grego",
+      "tag": "Potinho 150g",
+      "preco-antigo": 6.5,
+      "preco": 5.2,
+      "img": "/img/produtos/laticineos/iogurte-grego.jpg"
+    },
+    {
+      "id": 21,
+      "nome": "Queijo Prato",
+      "tag": "Peça 500g",
+      "preco-antigo": 26.0,
+      "preco": 22.9,
+      "img": "/img/produtos/laticineos/queijo-prato.jpg"
+    },
+    {
+      "id": 22,
+      "nome": "Leite Condensado",
+      "tag": "Lata 395g",
+      "preco-antigo": 7.5,
+      "preco": 6.1,
+      "img": "/img/produtos/laticineos/leite-condensado.jpg"
+    },
+    {
+      "id": 23,
+      "nome": "Queijo Cottage",
+      "tag": "Pote 250g",
+      "preco-antigo": 16.0,
+      "preco": 13.9,
+      "img": "/img/produtos/laticineos/queijo-cottage.jpg"
+    },
+    {
+      "id": 24,
+      "nome": "Leite de Cabra",
+      "tag": "Caixa 1L",
+      "preco-antigo": 9.0,
+      "preco": 7.5,
+      "img": "/img/produtos/laticineos/leite-cabra.jpg"
+    }
+  ],
+  "cereais": [
+    {
+      "id": 25,
+      "nome": "Arroz Branco Tipo 1",
+      "tag": "Pacote 5kg",
+      "preco-antigo": 25.0,
+      "preco": 21.9,
+      "img": "/img/produtos/cereais/arroz-branco.jpg"
+    },
+    {
+      "id": 26,
+      "nome": "Feijão Carioca",
+      "tag": "Pacote 1kg",
+      "preco-antigo": 10.9,
+      "preco": 8.99,
+      "img": "/img/produtos/cereais/feijao-carioca.jpg"
+    },
+    {
+      "id": 27,
+      "nome": "Lentilha",
+      "tag": "Pacote 500g",
+      "preco-antigo": 7.5,
+      "preco": 6.2,
+      "img": "/img/produtos/cereais/lentilha.jpg"
+    },
+    {
+      "id": 28,
+      "nome": "Farinha de Trigo",
+      "tag": "Pacote 1kg",
+      "preco-antigo": 5.5,
+      "preco": 4.8,
+      "img": "/img/produtos/cereais/farinha-trigo.jpg"
+    },
+    {
+      "id": 29,
+      "nome": "Aveia em Flocos Grossos",
+      "tag": "Pacote 1kg",
+      "preco-antigo": 13.9,
+      "preco": 11.9,
+      "img": "/img/produtos/cereais/aveia-grossa.jpg"
+    },
+    {
+      "id": 30,
+      "nome": "Milho para Pipoca",
+      "tag": "Pacote 500g",
+      "preco-antigo": 6.9,
+      "preco": 5.5,
+      "img": "/img/produtos/cereais/milho-pipoca.jpg"
+    },
+    {
+      "id": 31,
+      "nome": "Granola com Frutas",
+      "tag": "Pacote 500g",
+      "preco-antigo": 15.0,
+      "preco": 12.5,
+      "img": "/img/produtos/cereais/granola-frutas.jpg"
+    },
+    {
+      "id": 32,
+      "nome": "Cuscuz de Milho",
+      "tag": "Pacote 500g",
+      "preco-antigo": 7.5,
+      "preco": 6.2,
+      "img": "/img/produtos/cereais/cuscuz.jpg"
+    },
+    {
+      "id": 33,
+      "nome": "Fubá Mimoso",
+      "tag": "Pacote 1kg",
+      "preco-antigo": 8.0,
+      "preco": 6.8,
+      "img": "/img/produtos/cereais/fuba.jpg"
+    },
+    {
+      "id": 34,
+      "nome": "Quinoa em Grãos",
+      "tag": "Pacote 500g",
+      "preco-antigo": 22.0,
+      "preco": 19.9,
+      "img": "/img/produtos/cereais/quinoa.jpg"
+    },
+    {
+      "id": 35,
+      "nome": "Chia em Sementes",
+      "tag": "Pacote 300g",
+      "preco-antigo": 20.0,
+      "preco": 17.5,
+      "img": "/img/produtos/cereais/chia.jpg"
+    },
+    {
+      "id": 36,
+      "nome": "Semente de Linhaça",
+      "tag": "Pacote 300g",
+      "preco-antigo": 14.0,
+      "preco": 12.0,
+      "img": "/img/produtos/cereais/linhaça.jpg"
+    }
+  ],
+  "produtosDeLimpeza": [
+    {
+      "id": 37,
+      "nome": "Detergente Líquido",
+      "tag": "500ml",
+      "preco-antigo": 4.5,
+      "preco": 3.5,
+      "img": "/img/produtos/limpeza/detergente-liquido.jpg"
+    },
+    {
+      "id": 38,
+      "nome": "Água Sanitária",
+      "tag": "1L",
+      "preco-antigo": 6.0,
+      "preco": 4.99,
+      "img": "/img/produtos/limpeza/agua-sanitaria.jpg"
+    },
+    {
+      "id": 39,
+      "nome": "Limpador Multiuso",
+      "tag": "500ml",
+      "preco-antigo": 7.5,
+      "preco": 6.2,
+      "img": "/img/produtos/limpeza/limpador-multiuso.jpg"
+    },
+    {
+      "id": 40,
+      "nome": "Desinfetante Floral",
+      "tag": "500ml",
+      "preco-antigo": 8.0,
+      "preco": 6.5,
+      "img": "/img/produtos/limpeza/desinfetante-floral.jpg"
+    },
+    {
+      "id": 41,
+      "nome": "Sabão em Pó",
+      "tag": "Pacote 1kg",
+      "preco-antigo": 12.0,
+      "preco": 9.99,
+      "img": "/img/produtos/limpeza/sabao-po.jpg"
+    },
+    {
+      "id": 42,
+      "nome": "Esponja Multiuso",
+      "tag": "Pacote 3 unidades",
+      "preco-antigo": 5.5,
+      "preco": 4.5,
+      "img": "/img/produtos/limpeza/esponja.jpg"
+    },
+    {
+      "id": 43,
+      "nome": "Amaciante Concentrado",
+      "tag": "2L",
+      "preco-antigo": 20.0,
+      "preco": 17.5,
+      "img": "/img/produtos/limpeza/amaciante.jpg"
+    },
+    {
+      "id": 44,
+      "nome": "Limpador de Vidros",
+      "tag": "500ml",
+      "preco-antigo": 7.0,
+      "preco": 5.9,
+      "img": "/img/produtos/limpeza/limpador-vidros.jpg"
+    },
+    {
+      "id": 45,
+      "nome": "Pano de Microfibra",
+      "tag": "Pacote 2 unidades",
+      "preco-antigo": 15.0,
+      "preco": 12.9,
+      "img": "/img/produtos/limpeza/pano-microfibra.jpg"
+    },
+    {
+      "id": 46,
+      "nome": "Desengordurante Spray",
+      "tag": "500ml",
+      "preco-antigo": 10.0,
+      "preco": 8.5,
+      "img": "/img/produtos/limpeza/desengordurante.jpg"
+    },
+    {
+      "id": 47,
+      "nome": "Desodorizador de Ambientes",
+      "tag": "Spray 300ml",
+      "preco-antigo": 18.0,
+      "preco": 15.5,
+      "img": "/img/produtos/limpeza/desodorizador.jpg"
+    },
+    {
+      "id": 48,
+      "nome": "Lustra Móveis",
+      "tag": "Frasco 250ml",
+      "preco-antigo": 22.0,
+      "preco": 18.9,
+      "img": "/img/produtos/limpeza/lustra-moveis.jpg"
+    }
+  ],
+  "petShop": [
+    {
+      "id": 49,
+      "nome": "Ração Premium Cães Adultos",
+      "tag": "Pacote 5kg",
+      "preco-antigo": 120.0,
+      "preco": 99.9,
+      "img": "/img/produtos/petshop/racao-caes-adultos.jpg"
+    },
+    {
+      "id": 50,
+      "nome": "Areia Higiênica para Gatos",
+      "tag": "Pacote 5kg",
+      "preco-antigo": 25.0,
+      "preco": 19.9,
+      "img": "/img/produtos/petshop/areia-gatos.jpg"
+    },
+    {
+      "id": 51,
+      "nome": "Brinquedo Mordedor para Cães",
+      "tag": "Unidade",
+      "preco-antigo": 35.0,
+      "preco": 29.9,
+      "img": "/img/produtos/petshop/brinquedo-mordedor.jpg"
+    },
+    {
+      "id": 52,
+      "nome": "Shampoo para Cães e Gatos",
+      "tag": "500ml",
+      "preco-antigo": 22.0,
+      "preco": 17.9,
+      "img": "/img/produtos/petshop/shampoo.jpg"
+    },
+    {
+      "id": 53,
+      "nome": "Coleira Ajustável para Cães",
+      "tag": "Unidade",
+      "preco-antigo": 30.0,
+      "preco": 24.9,
+      "img": "/img/produtos/petshop/coleira.jpg"
+    },
+    {
+      "id": 54,
+      "nome": "Ração Premium Gatos Adultos",
+      "tag": "Pacote 3kg",
+      "preco-antigo": 95.0,
+      "preco": 79.9,
+      "img": "/img/produtos/petshop/racao-gatos-adultos.jpg"
+    },
+    {
+      "id": 55,
+      "nome": "Tapete Higiênico para Cães",
+      "tag": "Pacote com 10 unidades",
+      "preco-antigo": 40.0,
+      "preco": 34.9,
+      "img": "/img/produtos/petshop/tapete-higienico.jpg"
+    },
+    {
+      "id": 56,
+      "nome": "Comedouro Anti-Formiga",
+      "tag": "Unidade",
+      "preco-antigo": 25.0,
+      "preco": 21.5,
+      "img": "/img/produtos/petshop/comedouro.jpg"
+    },
+    {
+      "id": 57,
+      "nome": "Caminha para Pets Média",
+      "tag": "Unidade",
+      "preco-antigo": 150.0,
+      "preco": 129.9,
+      "img": "/img/produtos/petshop/caminha.jpg"
+    },
+    {
+      "id": 58,
+      "nome": "Petiscos para Cães",
+      "tag": "Pacote 500g",
+      "preco-antigo": 25.0,
+      "preco": 20.5,
+      "img": "/img/produtos/petshop/petiscos.jpg"
+    },
+    {
+      "id": 59,
+      "nome": "Shampoo Seco para Cães",
+      "tag": "Frasco 200ml",
+      "preco-antigo": 25.0,
+      "preco": 21.5,
+      "img": "/img/produtos/petshop/shampoo-seco.jpg"
+    },
+    {
+      "id": 60,
+      "nome": "Escova para Gatos",
+      "tag": "Unidade",
+      "preco-antigo": 30.0,
+      "preco": 26.9,
+      "img": "/img/produtos/petshop/escova-gatos.jpg"
+    }
+  ]
+}

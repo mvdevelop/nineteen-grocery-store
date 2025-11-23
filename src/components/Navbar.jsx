@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className={`nav-items ${menuOpen ? "active" : ""}`}>
 
           {/* Links */}
-          <ul className="nav-links fw-bold">
+          <ul className="nav-links fw-bold pt-3">
             <li><a href="/">Home</a></li>
             <li><a href="/produtos">Produtos</a></li>
             <li><a href="/sobre">Sobre</a></li>
