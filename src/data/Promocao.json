@@ -6,7 +6,7 @@
     "tag": "alimento",
     "preco-antigo": 27.9,
     "preco": 22.9,
-    "img": "/assets/products/arroz-5kg.jpg"
+    "img": "/products/arroz5kg.jpg"
   },
   {
     "id": 2,
@@ -14,7 +14,7 @@
     "tag": "alimento",
     "preco-antigo": 8.99,
     "preco": 6.99,
-    "img": "/assets/products/feijao-1kg.jpg"
+    "img": "/products/feijao-carioca-1kg.jpg"
   },
   {
     "id": 3,
@@ -22,7 +22,7 @@
     "tag": "alimento",
     "preco-antigo": 4.5,
     "preco": 3.79,
-    "img": "/assets/products/acucar-1kg.jpg"
+    "img": "/products/acucar-cristal-1kg.jpg"
   },
   {
     "id": 4,
