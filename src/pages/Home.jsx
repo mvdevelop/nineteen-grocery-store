@@ -68,7 +68,7 @@ export default function Home() {
               <h2 className="text-success mb-3">Sobre Nós</h2>
 
               <p>
-                A <strong>19 Grocery Store</strong> nasceu com o propósito de
+                A <strong>19 Market</strong> nasceu com o propósito de
                 oferecer produtos de qualidade, preços acessíveis e um
                 atendimento que realmente faz diferença no seu dia a dia.
                 Acreditamos que ir às compras deve ser algo simples, rápido e
@@ -149,12 +149,12 @@ export default function Home() {
 
               <p className="d-flex align-items-center gap-2">
                 <FaEnvelope className="text-success" size={20} />
-                <span>contato@19grocerystore.com</span>
+                <span>contato@19market.com</span>
               </p>
 
               <p className="d-flex align-items-center gap-2">
                 <FaMapMarkerAlt className="text-success" size={20} />
-                <span>Rua das Palmeiras, 123 — São Paulo, SP</span>
+                <span>Rua das Palmeiras, 123 — RJ, RJ</span>
               </p>
 
               <div className="mt-4">

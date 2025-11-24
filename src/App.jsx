@@ -14,6 +14,7 @@ import Contato from "./pages/Contato";
 
 import Busca from "./pages/Busca";
 import LoginSignup from "./pages/LoginSignup";
+import Carrinho from "./features/Carrinho";
 
 import ProdutosJSON from "./data/Produtos.json"; 
 
@@ -53,6 +54,7 @@ function App() {
             <Route path="/contato" element={<Contato />} />
 
             <Route path="/busca" element={<Busca />} />
+            <Route path="/carrinho" element={<Carrinho />} />
           </Routes>
 
           <Footer />

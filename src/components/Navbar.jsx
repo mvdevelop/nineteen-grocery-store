@@ -2,7 +2,6 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import {
   FaUser,
-  FaUserPlus,
   FaBars,
   FaTimes,
   FaSearch,
@@ -14,8 +13,10 @@ import {
 import { ThemeContext } from "../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
-import { supabase } from "../supabaseClient"; 
+import { supabase } from "../supabaseClient";
 import "./components.css";
+
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const searchRef = useRef();
 
-  // Monitorar estado do usuário Supabase
+  // Monitorar o estado do usuário Supabase
   useEffect(() => {
     async function getSession() {
       const {
@@ -41,12 +42,10 @@ export default function Navbar() {
       }
     );
 
-    return () => {
-      listener.subscription.unsubscribe();
-    };
+    return () => listener.subscription.unsubscribe();
   }, []);
 
-  // Fecha menu mobile ao clicar fora da search bar
+  // Fecha menu mobile clicando fora
   useEffect(() => {
     function handleClickOutside(event) {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -82,14 +81,17 @@ export default function Navbar() {
       <div className="nav-container">
         {/* Logo */}
         <img src="/icon.ico" alt="Logo" className="nav-logo-img" />
-        <div className="nav-logo">19 Grocery Store</div>
+        <div className="nav-logo">19 Market</div>
 
-        {/* Menu hamburguer (mobile) */}
-        <div className="nav-toggle" onClick={() => setMenuOpen((prev) => !prev)}>
+        {/* Menu hambúrguer */}
+        <div
+          className="nav-toggle"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
           {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
         </div>
 
-        {/* Items */}
+        {/* Conteúdo */}
         <div className={`nav-items ${menuOpen ? "active" : ""}`}>
           {/* Links */}
           <ul className="nav-links fw-bold pt-3">
@@ -107,12 +109,12 @@ export default function Navbar() {
             </li>
           </ul>
 
-          {/* Search bar */}
+          {/* Search */}
           <form
             className="nav-search"
             ref={searchRef}
-            style={{ position: "relative" }}
             onSubmit={handleSubmit}
+            style={{ position: "relative" }}
           >
             <input
               type="text"
@@ -120,7 +122,6 @@ export default function Navbar() {
               className={theme === "dark" ? "input-dark" : "input-light"}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              aria-label="Buscar produtos"
             />
             <button
               type="submit"
@@ -130,8 +131,8 @@ export default function Navbar() {
                 right: "10px",
                 top: "50%",
                 transform: "translateY(-50%)",
-                border: "none",
                 background: "transparent",
+                border: "none",
                 cursor: "pointer",
                 color: theme === "dark" ? "#eee" : "#222",
               }}
@@ -140,15 +141,22 @@ export default function Navbar() {
             </button>
           </form>
 
-          {/* Icons */}
+          {/* Ícones */}
           <div className="nav-icons" style={{ alignItems: "center" }}>
-            <FaShoppingCart className="nav-icon" title="Carrinho" />
+            <Link to="/carrinho">
+              <FaShoppingCart
+                className="nav-icon"
+                title="Carrinho"
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
 
             {user ? (
               <>
                 <span style={{ marginLeft: "10px", marginRight: "10px" }}>
-                  Olá, {user.email}
+                  Olá, {user.user_metadata?.name ?? user.email}
                 </span>
+
                 <button
                   onClick={handleLogoutClick}
                   style={{
@@ -164,20 +172,12 @@ export default function Navbar() {
                 </button>
               </>
             ) : (
-              <>
-                <FaUser
-                  className="nav-icon"
-                  title="Login"
-                  onClick={handleLoginClick}
-                  style={{ cursor: "pointer" }}
-                />
-                {/* <FaUserPlus
-                  className="nav-icon"
-                  title="Criar conta"
-                  onClick={handleLoginClick}
-                  style={{ cursor: "pointer" }}
-                /> */}
-              </>
+              <FaUser
+                className="nav-icon"
+                title="Login"
+                onClick={handleLoginClick}
+                style={{ cursor: "pointer" }}
+              />
             )}
 
             <button className="theme-button" onClick={toggleTheme}>

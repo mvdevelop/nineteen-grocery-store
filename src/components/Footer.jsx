@@ -18,7 +18,7 @@ export default function Footer() {
               rounded
               className="mb-2"
             />
-            <h4 className="fw-bold footer-title">19 Grocery Store</h4>
+            <h4 className="fw-bold footer-title">19 Market</h4>
             <p className="footer-text">
               Qualidade, variedade e praticidade em um só lugar.
               A sua mercearia completa, moderna e confiável.
@@ -51,7 +51,7 @@ export default function Footer() {
         <Row>
           <Col className="text-center mt-3">
             <p className="footer-copy small m-0">
-              © {new Date().getFullYear()} 19 Grocery Store — Todos os direitos reservados.
+              © {new Date().getFullYear()} 19 Market — Todos os direitos reservados.
             </p>
           </Col>
         </Row>
