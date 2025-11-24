@@ -20,6 +20,8 @@ import banner5 from "../assets/banners/banner5.jpg";
 import Promocao from "./produtos/Promocao";
 import Produtos from "./Produtos";
 
+import Forum from "./Forum";
+
 export default function Home() {
   return (
     <>
@@ -59,6 +61,8 @@ export default function Home() {
         <Promocao />
         <Produtos />
       </section>
+
+      <Forum />
 
       {/* Sobre */}
       <section className="py-5" id="sobre">
