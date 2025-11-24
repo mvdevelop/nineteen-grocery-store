@@ -1,24 +1,32 @@
 
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Card, ListGroup, Button } from "react-bootstrap";
 
+import { addToCart, removeFromCart } from "../store/slice/cartSlice";
+
 export default function Carrinho() {
-  const produtos = [
-    { id: 1, nome: "Produto A", preco: 49.9, quantidade: 1, img: "https://via.placeholder.com/80" },
-    { id: 2, nome: "Produto B", preco: 89.9, quantidade: 2, img: "https://via.placeholder.com/80" },
-  ];
+  const dispatch = useDispatch();
+  const produtos = useSelector((state) => state.cart.items);
 
   const quantidadeTotal = produtos.reduce((acc, p) => acc + p.quantidade, 0);
-  const valorTotal = produtos.reduce((acc, p) => acc + p.preco * p.quantidade, 0).toFixed(2);
+  const valorTotal = produtos
+    .reduce((acc, p) => acc + p.preco * p.quantidade, 0)
+    .toFixed(2);
 
   return (
     <Container className="py-4">
       <Row className="g-4">
 
+        {/* LISTA DE PRODUTOS */}
         <Col xs={12} md={8}>
           <Card className="shadow-sm">
             <Card.Body>
               <Card.Title className="mb-4 fs-4 fw-semibold">Seu Carrinho</Card.Title>
+
+              {produtos.length === 0 && (
+                <p className="text-muted">Seu carrinho está vazio.</p>
+              )}
 
               <ListGroup variant="flush">
                 {produtos.map((p) => (
@@ -30,12 +38,37 @@ export default function Carrinho() {
                       src={p.img}
                       alt={p.nome}
                       className="rounded"
-                      style={{ width: "80px", height: "80px", objectFit: "cover" }}
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        objectFit: "cover",
+                      }}
                     />
 
+                    {/* Nome e quantidade */}
                     <div className="flex-grow-1">
                       <h5 className="mb-1">{p.nome}</h5>
-                      <small className="text-muted">Quantidade: {p.quantidade}</small>
+                      <small className="text-muted">
+                        Quantidade: {p.quantidade}
+                      </small>
+
+                      <div className="mt-2 d-flex gap-2">
+                        <Button
+                          variant="outline-primary"
+                          size="sm"
+                          onClick={() => dispatch(addToCart(p))}
+                        >
+                          +
+                        </Button>
+
+                        <Button
+                          variant="outline-danger"
+                          size="sm"
+                          onClick={() => dispatch(removeFromCart(p.id))}
+                        >
+                          Remover
+                        </Button>
+                      </div>
                     </div>
 
                     <strong className="fs-5">R$ {p.preco.toFixed(2)}</strong>
@@ -46,8 +79,12 @@ export default function Carrinho() {
           </Card>
         </Col>
 
+        {/* RESUMO DO CARRINHO */}
         <Col xs={12} md={4}>
-          <Card className="shadow-sm position-sticky" style={{ top: "20px" }}>
+          <Card
+            className="shadow-sm position-sticky"
+            style={{ top: "20px" }}
+          >
             <Card.Body>
               <Card.Title className="fs-4 fw-semibold mb-3">Resumo</Card.Title>
 

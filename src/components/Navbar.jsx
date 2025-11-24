@@ -11,38 +11,64 @@ import {
 } from "react-icons/fa";
 
 import { ThemeContext } from "../context/ThemeContext";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+
 import "./components.css";
 
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  setUser as setUserRedux,
+  logout as logoutRedux,
+} from "../store/slice/userSlice";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState(null);
+  const [welcomeShown, setWelcomeShown] = useState(false); 
+
   const { theme, toggleTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const searchRef = useRef();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function getSession() {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
+    async function loadSession() {
+      const { data: { session } } = await supabase.auth.getSession();
+      const userData = session?.user ?? null;
+
+      setUser(userData);
+      dispatch(setUserRedux(userData));
     }
-    getSession();
+
+    loadSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
+      (event, session) => {
+        const userData = session?.user ?? null;
+
+        setUser(userData);
+        dispatch(setUserRedux(userData));
+
+        if (event === "SIGNED_IN" && userData && !welcomeShown) {
+          toast.success(
+            `Bem-vindo, ${userData.user_metadata?.name ?? userData.email}!`
+          );
+          setWelcomeShown(true);
+        }
+
+        if (event === "SIGNED_OUT") {
+          setWelcomeShown(false);
+        }
       }
     );
 
     return () => listener.subscription.unsubscribe();
-  }, []);
+  }, [dispatch, welcomeShown]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -56,7 +82,7 @@ export default function Navbar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (searchTerm.trim() !== "") {
+    if (searchTerm.trim()) {
       navigate(`/busca?query=${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm("");
       setMenuOpen(false);
@@ -70,43 +96,35 @@ export default function Navbar() {
 
   async function handleLogoutClick() {
     await supabase.auth.signOut();
-    setMenuOpen(false);
+    dispatch(logoutRedux());
     navigate("/");
+    setMenuOpen(false);
   }
 
   return (
     <nav className={`nav ${theme === "dark" ? "nav-dark" : "nav-light"}`}>
       <div className="nav-container">
+
         {/* Logo */}
         <Link to="/">
           <img src="/icon.ico" alt="Logo" className="nav-logo-img" />
         </Link>
         <div className="nav-logo">19 Market</div>
 
-        {/* Menu hambúrguer */}
-        <div
-          className="nav-toggle"
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
+        {/* Menu mobile */}
+        <div className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
         </div>
 
-        {/* Conteúdo */}
+        {/* Itens */}
         <div className={`nav-items ${menuOpen ? "active" : ""}`}>
+
           {/* Links */}
           <ul className="nav-links fw-bold pt-3">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/produtos">Produtos</a>
-            </li>
-            <li>
-              <a href="#sobre">Sobre</a>
-            </li>
-            <li>
-              <a href="#contato">Contato</a>
-            </li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/produtos">Produtos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
           </ul>
 
           {/* Search */}
@@ -123,6 +141,7 @@ export default function Navbar() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
+
             <button
               type="submit"
               aria-label="Buscar"
@@ -144,16 +163,12 @@ export default function Navbar() {
           {/* Ícones */}
           <div className="nav-icons" style={{ alignItems: "center" }}>
             <Link to="/carrinho">
-              <FaShoppingCart
-                className="nav-icon"
-                title="Carrinho"
-                style={{ cursor: "pointer" }}
-              />
+              <FaShoppingCart className="nav-icon" title="Carrinho" />
             </Link>
 
             {user ? (
               <>
-                <span style={{ marginLeft: "10px", marginRight: "10px" }}>
+                <span style={{ margin: "0 10px" }}>
                   Olá, {user.user_metadata?.name ?? user.email}
                 </span>
 
@@ -166,7 +181,6 @@ export default function Navbar() {
                     cursor: "pointer",
                     fontWeight: "bold",
                   }}
-                  title="Sair"
                 >
                   Sair
                 </button>

@@ -2,7 +2,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: null, // pode vir do Supabase
+  user: null,
+  isAuthenticated: false,
 };
 
 const userSlice = createSlice({
@@ -11,9 +12,11 @@ const userSlice = createSlice({
   reducers: {
     setUser(state, action) {
       state.user = action.payload;
+      state.isAuthenticated = true;
     },
     logout(state) {
       state.user = null;
+      state.isAuthenticated = false;
     },
   },
 });

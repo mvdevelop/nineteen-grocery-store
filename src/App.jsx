@@ -14,6 +14,8 @@ import Busca from "./pages/Busca";
 import LoginSignup from "./pages/LoginSignup";
 import Carrinho from "./features/Carrinho";
 
+import RequireAuth from "./features/auth/RequireAuth";
+
 import ProdutosJSON from "./data/Produtos.json";
 
 import { ToastContainer } from "react-toastify";
@@ -40,29 +42,30 @@ function App() {
     <Provider store={store}>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <BrowserRouter>
-          {/* Passa produtos para Navbar */}
           <Navbar produtos={ProdutosJSON} />
 
-          {/* Wrapper para aplicar tema */}
-          <div
-            className={
-              theme === "dark"
-                ? "bg-dark text-light"
-                : "bg-light text-dark"
-            }
-          >
+          <div className={theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}>
             <Routes>
               <Route path="/login" element={<LoginSignup />} />
+
               <Route path="/" element={<Home />} />
               <Route path="/produtos" element={<Produtos />} />
               <Route path="/busca" element={<Busca />} />
-              <Route path="/carrinho" element={<Carrinho />} />
+
+              {/* 🔒 Rota protegida pelo RequireAuth */}
+              <Route
+                path="/carrinho"
+                element={
+                  <RequireAuth>
+                    <Carrinho />
+                  </RequireAuth>
+                }
+              />
             </Routes>
 
             <Footer />
           </div>
 
-          {/* Toasts globais */}
           <ToastContainer position="bottom-right" autoClose={2500} />
         </BrowserRouter>
       </ThemeContext.Provider>
