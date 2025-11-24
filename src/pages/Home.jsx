@@ -55,13 +55,13 @@ export default function Home() {
         </Swiper>
       </section>
 
-      <section>
+      <section className="">
         <Promocao />
         <Produtos />
       </section>
 
       {/* Sobre */}
-      <section className="py-5">
+      <section className="py-5" id="sobre">
         <Container>
           <Row className="align-items-center">
             <Col md={6} className="mb-4 mb-md-0">
@@ -103,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* Contato */}
-      <section className="py-5">
+      <section className="py-5" id="contato">
         <Container>
           <h2 className="text-success text-center mb-4">Contato</h2>
 

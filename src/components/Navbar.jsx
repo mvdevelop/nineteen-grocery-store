@@ -26,7 +26,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const searchRef = useRef();
 
-  // Monitorar o estado do usuário Supabase
   useEffect(() => {
     async function getSession() {
       const {
@@ -45,7 +44,6 @@ export default function Navbar() {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  // Fecha menu mobile clicando fora
   useEffect(() => {
     function handleClickOutside(event) {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -80,7 +78,9 @@ export default function Navbar() {
     <nav className={`nav ${theme === "dark" ? "nav-dark" : "nav-light"}`}>
       <div className="nav-container">
         {/* Logo */}
-        <img src="/icon.ico" alt="Logo" className="nav-logo-img" />
+        <Link to="/">
+          <img src="/icon.ico" alt="Logo" className="nav-logo-img" />
+        </Link>
         <div className="nav-logo">19 Market</div>
 
         {/* Menu hambúrguer */}
@@ -102,10 +102,10 @@ export default function Navbar() {
               <a href="/produtos">Produtos</a>
             </li>
             <li>
-              <a href="/sobre">Sobre</a>
+              <a href="#sobre">Sobre</a>
             </li>
             <li>
-              <a href="/contato">Contato</a>
+              <a href="#contato">Contato</a>
             </li>
           </ul>
 
