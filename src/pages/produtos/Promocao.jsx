@@ -46,14 +46,14 @@ export default function Promocao() {
         navigation
         pagination={{ clickable: true }}
         autoplay={{
-          delay: 2500,     // troca a cada 2.5s
+          delay: 3500,     
           disableOnInteraction: false,
         }}
         breakpoints={{
           320: { slidesPerView: 1 },
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
-          1200: { slidesPerView: 5 }, // ⬅️ 5 produtos no fullscreen
+          1200: { slidesPerView: 5 },
         }}
       >
         {produtos.map((produto) => (

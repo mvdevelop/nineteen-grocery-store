@@ -1,9 +1,9 @@
-
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Card, ListGroup, Button } from "react-bootstrap";
 
 import { addToCart, removeFromCart } from "../store/slice/cartSlice";
+import { Link } from "react-router-dom";
 
 export default function Carrinho() {
   const dispatch = useDispatch();
@@ -17,12 +17,13 @@ export default function Carrinho() {
   return (
     <Container className="py-4">
       <Row className="g-4">
-
         {/* LISTA DE PRODUTOS */}
         <Col xs={12} md={8}>
           <Card className="shadow-sm">
             <Card.Body>
-              <Card.Title className="mb-4 fs-4 fw-semibold">Seu Carrinho</Card.Title>
+              <Card.Title className="mb-4 fs-4 fw-semibold">
+                Seu Carrinho
+              </Card.Title>
 
               {produtos.length === 0 && (
                 <p className="text-muted">Seu carrinho está vazio.</p>
@@ -53,6 +54,16 @@ export default function Carrinho() {
                       </small>
 
                       <div className="mt-2 d-flex gap-2">
+                        {/* Diminuir (-) */}
+                        <Button
+                          variant="outline-secondary"
+                          size="sm"
+                          onClick={() => dispatch(removeFromCart(p.id))}
+                        >
+                          -
+                        </Button>
+
+                        {/* Aumentar (+) */}
                         <Button
                           variant="outline-primary"
                           size="sm"
@@ -61,10 +72,11 @@ export default function Carrinho() {
                           +
                         </Button>
 
+                        {/* Remover item completamente */}
                         <Button
                           variant="outline-danger"
                           size="sm"
-                          onClick={() => dispatch(removeFromCart(p.id))}
+                          onClick={() => dispatch(removeFromCart(p.id, true))}
                         >
                           Remover
                         </Button>
@@ -81,10 +93,7 @@ export default function Carrinho() {
 
         {/* RESUMO DO CARRINHO */}
         <Col xs={12} md={4}>
-          <Card
-            className="shadow-sm position-sticky"
-            style={{ top: "20px" }}
-          >
+          <Card className="shadow-sm position-sticky" style={{ top: "20px" }}>
             <Card.Body>
               <Card.Title className="fs-4 fw-semibold mb-3">Resumo</Card.Title>
 
@@ -100,13 +109,14 @@ export default function Carrinho() {
                 <span>R$ {valorTotal}</span>
               </div>
 
-              <Button variant="primary" className="w-100 py-2 fs-5">
-                Ir para o Pagamento
-              </Button>
+              <Link to="/pagamento" className="w-100 text-decoration-none">
+                <Button variant="primary" className="w-100 py-2 fs-6">
+                  Finalizar Compra
+                </Button>
+              </Link>
             </Card.Body>
           </Card>
         </Col>
-
       </Row>
     </Container>
   );

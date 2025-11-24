@@ -13,6 +13,7 @@ import Produtos from "./pages/Produtos";
 import Busca from "./pages/Busca";
 import LoginSignup from "./pages/LoginSignup";
 import Carrinho from "./features/Carrinho";
+import Pagamento from "./features/Pagamento";
 
 import RequireAuth from "./features/auth/RequireAuth";
 
@@ -61,6 +62,8 @@ function App() {
                   </RequireAuth>
                 }
               />
+              
+              <Route path="/pagamento" element={<Pagamento />} />
             </Routes>
 
             <Footer />
