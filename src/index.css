@@ -1,41 +1,489 @@
 
 @import "tailwindcss";
 
-/* #root { } */
-
 /* Tema Light */
+:root, 
 body[data-theme="light"] {
   --bg-color: #ffffff;
-  --text-color: #222;
+  --text-color: #222222;
   --header-bg: #ffffff;
   --header-border: #e5e5e5;
+  --card-bg: #ffffff;
+  --input-bg: #f9fafb;
+  --border-color: #e5e7eb;
 }
 
 /* Tema Dark */
 body[data-theme="dark"] {
-  --bg-color: #1c1c1c;
-  --text-color: #f1f1f1;
-  --header-bg: #242424;
-  --header-border: #444;
+  --bg-color: #0f172a; /* slate-900 */
+  --text-color: #f8fafc; /* slate-50 */
+  --header-bg: #1e293b; /* slate-800 */
+  --header-border: #334155; /* slate-700 */
+  --card-bg: #1e293b; /* slate-800 */
+  --input-bg: #334155; /* slate-700 */
+  --border-color: #475569; /* slate-600 */
 }
 
-/* Aplicar variáveis */
+/* Aplicar variáveis CSS para compatibilidade com componentes existentes */
 body {
-  background: var(--bg-color);
+  background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Navbar */
+/* Estilos globais para transições suaves */
+* {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease,
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Classes utilitárias para temas (backward compatibility) */
 .nav {
-  background: var(--header-bg);
+  background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
 }
 
-/* Botão */
-.theme-btn {
+/* Botão de tema - mantido para compatibilidade */
+.theme-btn,
+.theme-button {
   background: transparent;
   border: none;
   cursor: pointer;
   color: var(--text-color);
+}
+
+/* Classes para inputs (caso ainda existam inputs não migrados) */
+.input-dark {
+  background-color: var(--input-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.input-light {
+  background-color: var(--input-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Classes para cards (backward compatibility) */
+.card-dark {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.card-light {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Estilos para componentes Swiper customizados */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 32px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  display: none;
+}
+
+/* Estilos para toasts */
+.Toastify__toast {
+  border-radius: 12px !important;
+  font-family: inherit !important;
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+}
+
+/* Estilos para scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #10b981; /* green-500 */
+  border-radius: 20px;
+  border: 2px solid var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #059669; /* green-600 */
+}
+
+/* Estilos para seleção de texto */
+::selection {
+  background-color: rgba(16, 185, 129, 0.3); /* green-500 com opacidade */
+  color: var(--text-color);
+}
+
+/* Estilos para links não migrados */
+a:not([class*="text-"]) {
+  color: #3b82f6; /* blue-500 */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:not([class*="text-"]):hover {
+  color: #1d4ed8; /* blue-700 */
+  text-decoration: underline;
+}
+
+/* Classes para line-clamp (usadas nos produtos) */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Estilos para focus visível */
+:focus-visible {
+  outline: 2px solid #3b82f6; /* blue-500 */
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Estilos para imagens responsivas */
+img:not([class*="w-"]) {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media queries para melhor responsividade */
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .swiper-pagination-bullet-active {
+    width: 24px;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Placeholder shimmer effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Classes para containers responsivos */
+.container-fluid {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .container-fluid {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-fluid {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-fluid {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-fluid {
+    max-width: 1536px;
+  }
+}
+
+/* Estilos específicos para as promoções */
+.promo-swiper .swiper-pagination-bullet {
+  @apply w-3 h-3 bg-gray-300 transition-all duration-300;
+}
+
+.promo-swiper .swiper-pagination-bullet-active {
+  @apply w-8 bg-gradient-to-r from-red-500 to-amber-500 rounded-full;
+}
+
+/* Animação para o efeito de chama */
+@keyframes flame {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.animate-flame {
+  animation: flame 1.5s ease-in-out infinite;
+}
+
+/* Efeito de brilho para os cards de promoção */
+.promo-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff6b6b, #ffa726, #ff6b6b);
+  border-radius: 24px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.promo-card:hover::before {
+  opacity: 1;
+}
+
+/* Estilo para preços com destaque */
+.price-breakdown {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress bar animation */
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+
+.progress-bar {
+  animation: progress 1.5s ease-out forwards;
+}
+
+/* Animações para o formulário de login */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Estilo para inputs com foco */
+.input-focus-effect:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Estilo para botão de toggle password */
+.password-toggle {
+  transition: all 0.2s ease;
+}
+
+.password-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Efeito de loading para o botão */
+@keyframes button-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.button-loading {
+  animation: button-pulse 1.5s ease-in-out infinite;
+}
+
+/* Estilo para checkbox customizado */
+.custom-checkbox {
+  position: relative;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Gradiente animado para o card */
+.card-gradient-border {
+  position: relative;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #3b82f6, #10b981, #3b82f6);
+  background-size: 200% 200%;
+  border-radius: 24px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.card-gradient-border:hover::before {
+  opacity: 0.3;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }

@@ -1,0 +1,124 @@
+
+/* Animações para o carrinho */
+@keyframes cartItemAdd {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cartItemRemove {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+.cart-item-enter {
+  animation: cartItemAdd 0.3s ease-out;
+}
+
+.cart-item-exit {
+  animation: cartItemRemove 0.3s ease-out;
+}
+
+/* Estilo para botões de quantidade */
+.quantity-btn {
+  transition: all 0.2s ease;
+}
+
+.quantity-btn:hover {
+  transform: scale(1.1);
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+/* Efeito de brilho no botão de compra */
+.purchase-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.purchase-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+}
+
+.purchase-btn:hover::after {
+  left: 120%;
+}
+
+/* Estilo para cupom aplicado */
+.coupon-applied {
+  position: relative;
+}
+
+.coupon-applied::before {
+  content: '✓';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* Animação para produtos recomendados */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.product-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Scrollbar customizada para lista de produtos */
+.cart-items-container {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.cart-items-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-items-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.cart-items-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.cart-items-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
