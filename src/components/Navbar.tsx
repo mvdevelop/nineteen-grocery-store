@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   FaUser,
   FaBars,
@@ -9,7 +9,7 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 
-import { ThemeContext } from "../context/ThemeContext";
+import { useTheme } from "../context/ThemeContext";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 
@@ -35,13 +35,13 @@ interface ThemeClasses {
   mobileMenu: string;
 }
 
-export default function Navbar({ produtos }: NavbarProps) {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState<Record<string, unknown> | null>(null);
   const [welcomeShown, setWelcomeShown] = useState(false);
 
-  const { theme, toggleTheme } = useContext(ThemeContext)!;
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const searchRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();

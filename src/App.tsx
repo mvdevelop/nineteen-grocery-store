@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { ThemeContext } from "./context/ThemeContext";
+import { ThemeProvider } from "./context/ThemeProvider";
+import { useTheme } from "./context/ThemeContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -25,53 +26,45 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 
 function App() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
-
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
   return (
     <Provider store={store}>
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <ThemeProvider>
         <BrowserRouter>
-          <Navbar produtos={ProdutosJSON} />
-
-          <div className={theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}>
-            <Routes>
-              <Route path="/login" element={<LoginSignup />} />
-
-              <Route path="/" element={<Home />} />
-              <Route path="/produtos" element={<Produtos />} />
-              <Route path="/busca" element={<Busca />} />
-
-              {/* 🔒 Rota protegida pelo RequireAuth */}
-              <Route
-                path="/carrinho"
-                element={
-                  <RequireAuth>
-                    <Carrinho />
-                  </RequireAuth>
-                }
-              />
-
-              <Route path="/pagamento" element={<Pagamento />} />
-            </Routes>
-
-            <Footer />
-          </div>
-
+          <Navbar />
+          <MainContent />
+          <Footer />
           <ToastContainer position="bottom-right" autoClose={2500} />
         </BrowserRouter>
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </Provider>
+  );
+}
+
+function MainContent() {
+  const { theme } = useTheme();
+
+  return (
+    <div className={theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}>
+      <Routes>
+        <Route path="/login" element={<LoginSignup />} />
+
+        <Route path="/" element={<Home />} />
+        <Route path="/produtos" element={<Produtos />} />
+        <Route path="/busca" element={<Busca />} />
+
+        {/* 🔒 Rota protegida pelo RequireAuth */}
+        <Route
+          path="/carrinho"
+          element={
+            <RequireAuth>
+              <Carrinho />
+            </RequireAuth>
+          }
+        />
+
+        <Route path="/pagamento" element={<Pagamento />} />
+      </Routes>
+    </div>
   );
 }
 

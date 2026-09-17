@@ -1,5 +1,4 @@
-
-import { defineConfig, type PluginOption } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { createHtmlPlugin } from "vite-plugin-html";
@@ -68,7 +67,7 @@ export default defineConfig({
         ],
       },
     }),
-  ] as PluginOption[],
+  ],
   // Resolução de aliases (compatível com tsconfig.json paths)
   resolve: {
     alias: {
