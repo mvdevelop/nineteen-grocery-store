@@ -89,9 +89,9 @@ describe("Carrinho", () => {
     fireEvent.change(screen.getAllByPlaceholderText(/Digite o cupom/i)[0], {
       target: { value: "PROMO10" },
     });
-    fireEvent.click(screen.getByRole("button", { name: /Aplicar/i }));
+    fireEvent.click(screen.getAllByRole("button", { name: /Aplicar/i })[0]);
 
-    expect(screen.getByText(/Desconto \(10%\)/i)).toBeTruthy();
+    expect(screen.getAllByText(/Desconto \(10%\)/i)[0]).toBeTruthy();
   });
 
   it("deve mostrar frete grátis acima de R$ 150", () => {

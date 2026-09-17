@@ -1,4 +1,5 @@
-import { defineConfig } from "vite";
+
+import { defineConfig, type PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { createHtmlPlugin } from "vite-plugin-html";
@@ -17,7 +18,7 @@ export default defineConfig({
             tag: "meta",
             attrs: {
               "http-equiv": "Content-Security-Policy",
-              content: [
+              "content": [
                 "default-src 'self'",
                 "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com",
                 "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
@@ -37,7 +38,7 @@ export default defineConfig({
             tag: "meta",
             attrs: {
               "http-equiv": "X-Content-Type-Options",
-              content: "nosniff",
+              "content": "nosniff",
             },
           },
           // X-Frame-Options — previne clickjacking
@@ -45,7 +46,7 @@ export default defineConfig({
             tag: "meta",
             attrs: {
               "http-equiv": "X-Frame-Options",
-              content: "DENY",
+              "content": "DENY",
             },
           },
           // Referrer-Policy — controla quanto do referrer é enviado
@@ -53,7 +54,7 @@ export default defineConfig({
             tag: "meta",
             attrs: {
               name: "referrer",
-              content: "strict-origin-when-cross-origin",
+              "content": "strict-origin-when-cross-origin",
             },
           },
           // Theme color para PWA
@@ -67,7 +68,13 @@ export default defineConfig({
         ],
       },
     }),
-  ],
+  ] as PluginOption[],
+  // Resolução de aliases (compatível com tsconfig.json paths)
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
   // Testes com Vitest
   test: {
     environment: "jsdom",

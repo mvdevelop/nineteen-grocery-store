@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "ts-node": true,
+    "types": ["vite/client"]
+  },
+  "include": ["vite.config.js"]
+}
