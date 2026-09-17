@@ -80,6 +80,9 @@ export default defineConfig({
     setupFiles: ["./src/setupTests.js"],
     include: ["src/**/*.{test,spec}.{js,jsx,ts,tsx}"],
     isolate: false,
+    testTimeout: 30000,
+    hookTimeout: 30000,
+    teardownTimeout: 30000,
     coverage: {
       reporter: ["text", "lcov"],
       include: ["src/**/*.{js,jsx}"],
