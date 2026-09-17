@@ -1,9 +1,10 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { FaPaperPlane, FaStar, FaHeart, FaQuoteLeft, FaUser, FaRegSmile } from "react-icons/fa";
 import { BsEmojiHeartEyes, BsEmojiSunglasses } from "react-icons/bs";
+import DOMPurify from "dompurify";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,6 +12,7 @@ import "swiper/css/navigation";
 
 export default function Forum() {
   const [mensagem, setMensagem] = useState("");
+  const buttonRef = useRef(null);
   const [comentarios, setComentarios] = useState([
     {
       id: 1,
@@ -77,11 +79,17 @@ export default function Forum() {
   function enviarComentario() {
     if (mensagem.trim() === "") return;
 
+    // Sanitiza o texto do usuário para prevenir XSS armazenado
+    const textoSanitizado = DOMPurify.sanitize(mensagem, {
+      ALLOWED_TAGS: [], // Remove todas as tags HTML — texto puro
+      ALLOWED_ATTR: [],
+    });
+
     const novo = {
       id: Date.now(),
       usuario: "Você",
       avatar: "https://i.pravatar.cc/150?u=anon",
-      texto: mensagem,
+      texto: textoSanitizado,
       data: "Agora mesmo",
       rating: 5,
       likes: 0,
@@ -90,11 +98,12 @@ export default function Forum() {
 
     setComentarios([novo, ...comentarios]);
     setMensagem("");
-    
-    // Feedback visual
-    const button = document.getElementById("enviar-btn");
-    button.classList.add("scale-95");
-    setTimeout(() => button.classList.remove("scale-95"), 150);
+
+    // Feedback visual usando ref ao invés de getElementById
+    if (buttonRef.current) {
+      buttonRef.current.classList.add("scale-95");
+      setTimeout(() => buttonRef.current.classList.remove("scale-95"), 150);
+    }
   }
 
   function handleKeyPress(e) {
@@ -173,7 +182,7 @@ export default function Forum() {
               </div>
 
               <button
-                id="enviar-btn"
+                ref={buttonRef}
                 onClick={enviarComentario}
                 disabled={!mensagem.trim()}
                 className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-3 ${
