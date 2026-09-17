@@ -4,8 +4,8 @@ import Forum from "./Forum";
 
 // Mock do Swiper
 vi.mock("swiper/react", () => ({
-  Swiper: ({ children }) => <div data-testid="swiper">{children}</div>,
-  SwiperSlide: ({ children }) => <div data-testid="slide">{children}</div>,
+  Swiper: ({ children }: { children: React.ReactNode }) => <div data-testid="swiper">{children}</div>,
+  SwiperSlide: ({ children }: { children: React.ReactNode }) => <div data-testid="slide">{children}</div>,
 }));
 
 vi.mock("swiper/modules", () => ({
@@ -17,8 +17,7 @@ vi.mock("swiper/modules", () => ({
 // Mock do DOMPurify
 vi.mock("dompurify", () => ({
   default: {
-    sanitize: (text) => {
-      // Simula sanitização: remove tags HTML
+    sanitize: (text: string) => {
       return text.replace(/<[^>]*>/g, "");
     },
   },
@@ -27,8 +26,8 @@ vi.mock("dompurify", () => ({
 describe("Forum", () => {
   it("deve renderizar o título principal", () => {
     render(<Forum />);
-    const titulo = screen.getByText(/O que nossos clientes dizem/i);
-    expect(titulo).toBeTruthy();
+    const titulos = screen.getAllByText(/O que nossos clientes dizem/i);
+    expect(titulos.length).toBeGreaterThan(0);
   });
 
   it("deve exibir comentários iniciais", () => {
@@ -42,15 +41,14 @@ describe("Forum", () => {
     const botoes = screen.getAllByRole("button", {
       name: /Publicar Comentário/i,
     });
-    const botao = botoes[0];
     // O botão deve estar disabled quando não há texto
-    expect(botao.hasAttribute("disabled")).toBe(true);
+    expect(botoes[0].hasAttribute("disabled")).toBe(true);
   });
 
   it("deve atualizar o campo de mensagem ao digitar", () => {
     render(<Forum />);
     const textareas = screen.getAllByPlaceholderText(/Compartilhe/i);
-    const textarea = textareas[0];
+    const textarea = textareas[0] as HTMLTextAreaElement;
 
     fireEvent.change(textarea, { target: { value: "Excelente!" } });
     expect(textarea.value).toBe("Excelente!");

@@ -78,7 +78,7 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: ["./src/setupTests.js"],
-    include: ["src/**/*.{test,spec}.{js,jsx}"],
+    include: ["src/**/*.{test,spec}.{js,jsx,ts,tsx}"],
     isolate: false,
     coverage: {
       reporter: ["text", "lcov"],
